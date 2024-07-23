@@ -346,7 +346,7 @@ const handleDropdownChange = (selectedItem) => {
 		<Dropdown 
 			value={newRowData.item}
 			onChange={(e) => handleDropdownChange(e.target.value)}
-			options={['pen','book','notes','sharpner']}
+			option={['pen','book','notes','sharpner']}
 		/>
      
         <input

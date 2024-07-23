@@ -165,7 +165,7 @@ useEffect(()=>{
       console.error('Error:', error);
     });
 	calculateTotals();
-}, [data]);
+}, []);
 console.log(useEffect);
 
 
