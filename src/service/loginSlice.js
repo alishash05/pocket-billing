@@ -1,29 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit';
+import https from "../util/http";
 
-const loginSlice = createSlice({
-  name: 'login',
+const authenticationSlice = createSlice({
+  name: 'authentication',
   initialState: {
-    email: '',
-    firstName: '',
-    gender: '',
-    id: '',
-    image: '',
-    lastName: '',
-    token: '',
-    username: '',
+    userDetails:{},
+    token:""
   },
   reducers: {
-    Email: (state, action) => { state.email = action.payload; },
-    FirstName: (state, action) => { state.firstName = action.payload; },
-    Gender: (state, action) => { state.gender = action.payload; },
-    Id: (state, action) => { state.id = action.payload; },
-    Image: (state, action) => { state.image = action.payload; },
-    LastName: (state, action) => { state.lastName = action.payload; },
-    Token: (state, action) => { state.token = action.payload; },
-    Username: (state, action) => { state.username = action.payload; },
-    Password: (state, action) => { state.password = action.payload; },
+    setUserDetails:(state, action)=>{
+      return {
+        ...state,
+        userDetails: action.payload,
+      }
+    },
+    setToken:(state, action)=>{
+      return {
+        ...state,
+        token: action.payload
+      }
+    }
   },
 });
 
-export const { Email, FirstName, Gender, Id, Image, LastName, Token, Username, Password } = loginSlice.actions;
-export default loginSlice.reducer;
+export const { setUserDetails, setToken } = authenticationSlice.actions;
+
+
+export const fetchLogin = ()=>(dispatch)=>{
+  https(`${"'http://localhost:8080/auth/login"}`,{
+    method:'POST',
+    data:{
+      email: "alisha.shaikh@billing.com",
+      password:"alisha"
+    }
+  }).then((res)=>{
+    dispatch(setToken(res.jwtToken));
+    dispatch(setUserDetails(res));
+  }).catch((error)=>{
+    console.log(error);
+  });
+}
+
+export const { userDetails, token } = ({ authentication })=> authentication;
+
+
+
+
+export default authenticationSlice.reducer;

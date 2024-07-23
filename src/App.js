@@ -2,13 +2,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { createUseStyles } from 'react-jss';
-import Input from './login/Input.js';
 import NextPage from './NextPage.js';
-import SignOut from './SignOut.js'; 
 import store from './store/store.js';
-import Header from './Header.js';
 import Login from './view/login.js';
-import SignIn from './signin/SignIn.js';
+import SignIn from './view/signIn.js';
+import { setupInterceptor } from "./util/http.js";
 
 const useStyles = createUseStyles({
   color: {
@@ -19,7 +17,7 @@ const useStyles = createUseStyles({
     border: '1px solid white',
   },
 });
-
+setupInterceptor(store);
 function App(props){
 const classes = useStyles();
 
@@ -31,7 +29,7 @@ return(
 				<Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<SignIn />} />
 				<Route path="/next" element={<NextPage />} />
-				<Route path="/SignOut" element={<SignOut />} />
+				{/* <Route path="/SignOut" element={<SignOut />} /> */}
 			</Routes> 
         </Router>
     </Provider>

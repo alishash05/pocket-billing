@@ -122,11 +122,36 @@ const useStyles = createUseStyles({
 function Login() {
     const classes = useStyles();
     const navigate = useNavigate();
+   const [shownoValidEmail, showNoValidEmail] = useState(true);
+   const [userInput, setUserInput] = useState('');
+   const [passInput, setPassInput] = useState('');
+
+
+const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
 const onChange =(e) =>{
     // validation of username password should be here 
     //login button should be disbale untill username password are not fill with values
       console.log(e.target.value, ">>> onChange");
+      const { id } = e.target;
+
+      if(e.target.id=="username"){
+        if(e.target?.value && e.target.value.match(isValidEmail)){
+            showNoValidEmail(false);
+            setUserInput(e.target.value)
+          }else{
+            showNoValidEmail(true);
+          }
+      }
+
+      if(e.target.id=="password"){
+        if(e.target?.value && e.target.value.length >= 8){
+           // showNoValidEmail(false);
+           setPassInput(e.target.value)
+          }else{
+           // showNoValidEmail(true);
+          }
+      }
     }
 
 const login =()=>{
@@ -138,9 +163,9 @@ const login =()=>{
 <div className={classes.loginPage}>
 <div className={classes.form}>
     <form className={classes.loginForm} >
-      <input type="text" id="username"  onChange={(e)=>onChange(e)} placeholder="username"/>
-      <input type="password" id="password" onChange={(e)=>onChange(e)} placeholder="password"/>
-      <button onClick={()=>login()}>login</button>
+      <input type="text" id="username" value={userInput      }  onChange={(e)=>onChange(e)} placeholder="username"/>
+      <input type="password" id="password" value={passInput} onChange={(e)=>onChange(e)} placeholder="password"/>
+      <button onClick={()=>login()} disabled={shownoValidEmail}>login</button>
       <p className={classes.message}>Not registered? <a href="#">Create an account</a></p>
     </form> 
 </div>
