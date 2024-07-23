@@ -1,0 +1,17 @@
+/*import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux';
+import login from '../service/loginSlice';
+
+export default configureStore({
+  reducer: combineReducers({
+    login: login,
+  }),
+});
+*/
+import { createStore } from 'redux';
+import devToolsEnhancer from 'remote-redux-devtools';
+
+
+const store = createStore(rootReducer, devToolsEnhancer());
+
+export default store;

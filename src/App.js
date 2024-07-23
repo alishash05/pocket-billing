@@ -7,12 +7,15 @@ import NextPage from './NextPage.js';
 import SignOut from './SignOut.js'; 
 import store from './store/store.js';
 import Header from './Header.js';
+import Login from './view/login.js';
+import SignIn from './signin/SignIn.js';
 
 const useStyles = createUseStyles({
   color: {
-    background: 'linear-gradient(135deg, #3b88f7 0%, #8b8bf9 100%)',
-    maxWidth: '1400px',
+   /// background: 'linear-gradient(135deg, #3b88f7 0%, #8b8bf9 100%)',
+    maxWidth: '100%',
     minWidth: '350px',
+    height:"100%",
     border: '1px solid white',
   },
 });
@@ -25,7 +28,8 @@ return(
     <Provider store={store}>
         <Router>
 				<Routes> 
-				<Route path="/" element={<Input />} />
+				<Route path="/" element={<Login />} />
+        <Route path="/sign-in" element={<SignIn />} />
 				<Route path="/next" element={<NextPage />} />
 				<Route path="/SignOut" element={<SignOut />} />
 			</Routes> 
