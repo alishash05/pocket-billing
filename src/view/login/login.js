@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { createUseStyles } from 'react-jss';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { fetchLogin } from "../../service/loginSlice";
 const useStyles = createUseStyles({
   show: {
     borderRadius: '25px',
@@ -56,8 +56,8 @@ const useStyles = createUseStyles({
       padding: "15px",
       color: "#FFFFFF",
       fontSize: "14px",
-      "-webkit-transition": "all 0.3 ease",
-      transition: "all 0.3 ease",
+      // "-webkit-transition": "all 0.3 ease",
+      // transition: "all 0.3 ease",
       cursor: "pointer",
     },
 
@@ -122,6 +122,7 @@ const useStyles = createUseStyles({
 function Login() {
     const classes = useStyles();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
    const [shownoValidEmail, showNoValidEmail] = useState(true);
    const [userInput, setUserInput] = useState('');
    const [passInput, setPassInput] = useState('');
@@ -154,8 +155,9 @@ const onChange =(e) =>{
       }
     }
 
-const login =()=>{
+const login =() =>{
     // API call should be hit from here if error come should be diaplay in same page
+     dispatch(fetchLogin());
     console.log(">>> login");
 }
   return (
@@ -165,7 +167,7 @@ const login =()=>{
     <form className={classes.loginForm} >
       <input type="text" id="username" value={userInput      }  onChange={(e)=>onChange(e)} placeholder="username"/>
       <input type="password" id="password" value={passInput} onChange={(e)=>onChange(e)} placeholder="password"/>
-      <button onClick={()=>login()} disabled={shownoValidEmail}>login</button>
+      <button onClick={()=>login()} type='button'>login</button>
       <p className={classes.message}>Not registered? <a href="#">Create an account</a></p>
     </form> 
 </div>

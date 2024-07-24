@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
 import { createUseStyles } from 'react-jss';
 import NextPage from './NextPage.js';
 import store from './store/store.js';
-import Login from './view/login.js';
-import SignIn from './view/signIn.js';
+import Login from './view/login/login.js';
+import SignIn from './view/login/signIn.js';
 import { setupInterceptor } from "./util/http.js";
 
 const useStyles = createUseStyles({
