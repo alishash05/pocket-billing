@@ -6,6 +6,7 @@ import NextPage from './NextPage.js';
 import store from './store/store.js';
 import Login from './view/login/login.js';
 import SignIn from './view/login/signIn.js';
+import DashBoard from "./view/dashboard/dashboard.js";
 import { setupInterceptor } from "./util/http.js";
 
 const useStyles = createUseStyles({
@@ -28,6 +29,7 @@ return(
 				<Routes> 
 				<Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/dashboard" element={<DashBoard />} />
 				<Route path="/next" element={<NextPage />} />
 				{/* <Route path="/SignOut" element={<SignOut />} /> */}
 			</Routes> 
