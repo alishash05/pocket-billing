@@ -187,11 +187,27 @@ import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from "../../service/loginSlice";
 
 const useStyles = createUseStyles({
+  show: {
+    borderRadius: '25px',
+    background: 'white',
+    width: '90%',
+    maxWidth: '380px',
+    margin: '50px auto',
+    padding: '20px',
+    boxSizing: 'border-box',
+  },
+  box: {
+    background: 'white',
+    color: 'black',
+    textAlign: 'center',
+  },
   loginPage: {
     width: "360px",
     padding: "8% 0 0",
     margin: "auto",
   },
+
+
   form: {
     position: "relative",
     zIndex: 1,
@@ -213,7 +229,7 @@ const useStyles = createUseStyles({
       fontSize: "14px",
     },
     "& button": {
-      fontFamily: "sans-serif",
+      fontFamily:"sans-serif",
       textTransform: "uppercase",
       outline: "0",
       background: "#4CAF50",
@@ -222,22 +238,67 @@ const useStyles = createUseStyles({
       padding: "15px",
       color: "#FFFFFF",
       fontSize: "14px",
+      // "-webkit-transition": "all 0.3 ease",
+      // transition: "all 0.3 ease",
       cursor: "pointer",
     },
+
     "& button:hover, & button:active, & button:focus": {
       background: "#43A047",
     },
-    message: {
+    message:{
       margin: "15px 0 0",
       color: "#b3b3b3",
       fontSize: "12px",
-      fontFamily: "sans-serif",
+      fontFamily:"sans-serif",
       "& a": {
         color: "#4CAF50",
         textDecoration: "none",
       }
     },
+   registerForm: {
+      display: "none",
+    },
   },
+  container: {
+    position: "relative",
+    zIndex: 1,
+    maxWidth: "300px",
+    margin: "0 auto",
+
+    "& :before, :after":{
+      content: "",
+      display: "block",
+      clear: "both",
+    },
+    info: {
+      margin: "50px auto",
+      textAlign: "center",
+      "& h1": {
+        margin: "0 0 15px",
+        padding: 0,
+        fontSize: "36px",
+        fontWeight: "300",
+        color: "#1a1a1a",
+      },
+      "& span": {
+        color: "#4d4d4d",
+        fontSize: "12px",
+        fa: {
+          color: "#EF3B3A"
+        },
+        "& a":{
+          color: "#000000",
+          textDecoration: "none",
+        }
+      }
+    },
+  },
+  body:{
+    fontFamily: "sans-serif",
+    "-webkit-font-smoothing": "antialiased",
+    "-moz-osx-font-smoothing": "grayscale",     
+  }
 });
 
 function Login() {
@@ -268,7 +329,7 @@ function Login() {
       return;
     }
 //API call should be hit from here if error come should be diaplay in same page
-    await dispatch(fetchLogin(userInput, passInput));
+   await dispatch(fetchLogin(userInput, passInput));
 
     navigate('/Next');
   }
