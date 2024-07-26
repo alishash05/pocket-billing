@@ -331,8 +331,9 @@ function Login() {
 //API call should be hit from here if error come should be diaplay in same page
    await dispatch(fetchLogin(userInput, passInput));
 
-    navigate('/Next');
-  }
+  //   navigate('/Next');
+    navigate('/dashboard');
+}
 
   return (
     <div className={classes.loginPage}>
