@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import AccordionGroup from '@mui/joy/AccordionGroup';
 import Accordion from '@mui/joy/Accordion';
 import AccordionDetails from '@mui/joy/AccordionDetails';
+import DetailBox from "../../component/skeloton/DetailBox";
+
 import AccordionSummary, {
     accordionSummaryClasses,
 } from '@mui/joy/AccordionSummary';
@@ -50,9 +52,10 @@ function DashBoard() {
                             setIndex(expanded ? num : null);
                             }}
                                             >
-                            <AccordionSummary indicator={<AddIcon />}>{item}</AccordionSummary>
+                            <AccordionSummary indicator={<AddIcon />}>{item.value}</AccordionSummary>
                             <AccordionDetails>
-                                Details will come here soon....
+                                <DetailBox />
+                                {item.name}
                             </AccordionDetails>
                         </Accordion>
                     );
