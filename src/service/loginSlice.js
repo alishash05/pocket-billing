@@ -5,7 +5,7 @@ const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
     userDetails:{},
-    token:"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGlzaGEuc2hhaWtoQGJpbGxpbmcuY29tIiwiaWF0IjoxNzIxOTI1NTQ4LCJleHAiOjE3MjE5NDM1NDh9.BDvG02USLPV24w8mh6dU9lB0Dbr6HHfV-olugK8txnRHzRr7FUHQFzcl_CkcsWn37T-p_X1g55LlWvgN5kwGVA",
+    token:"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGlzaGEuc2hhaWtoQGJpbGxpbmcuY29tIiwiaWF0IjoxNzIxOTgwNTg2LCJleHAiOjE3MjE5OTg1ODZ9.QvHwEJI10b1IhJGxCfK7cZk2QtKcKQfrITqhSLgNDebZdqyWDsOvVYnHfq3I8q389rdr3r3z71JEX0tJmXLPFA",
     suggetions:[],
   },
   reducers: {
@@ -73,14 +73,14 @@ import { createSlice } from '@reduxjs/toolkit';
 import https from "../util/http";
 import axios from 'axios';
 
-const initialState = {
-  userDetails: {},
-  token: "",
-};
 
 const authenticationSlice = createSlice({
   name: 'authentication',
-  initialState,
+  initialState: {
+    userDetails:{},
+    token:'',
+    suggetions:[],
+  },
   reducers: {
     setUserDetails: (state, action) => {
       state.userDetails = action.payload;
@@ -94,10 +94,17 @@ const authenticationSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+    setSuggetions:(state, action)=>{
+      console.log(action.payload, ">>> action.payload");
+      return {
+        ...state,
+        suggetions: action.payload
+      }
+    }
   },
 });
 
-export const { setUserDetails, setToken,} = authenticationSlice.actions;
+export const { setUserDetails, setToken, setSuggetions } = authenticationSlice.actions;
 
 export const fetchLogin = (username, password) => async (dispatch) => {
   try {
@@ -116,6 +123,17 @@ export const fetchLogin = (username, password) => async (dispatch) => {
   }
 };
 
-export const selectAuthentication = (state) => state.authentication;
 
+export const fetchAutocomplete = (search)=>(dispatch)=>{
+  https(`${process.env.REACT_APP_APIBASE_URL}/suggestions?prefix=${search}`,{
+    method:"GET"
+  }).then(({data})=>{
+    dispatch(setSuggetions(data));
+    console.log(data, "search result");
+  })
+}
+
+
+export const selectAuthentication = (state) => state.authentication;
+export const getSuggetionsList = ({authentication})=> authentication.suggetions;
 export default authenticationSlice.reducer;

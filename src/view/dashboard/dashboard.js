@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import AccordionGroup from '@mui/joy/AccordionGroup';
 import Accordion from '@mui/joy/Accordion';
 import AccordionDetails from '@mui/joy/AccordionDetails';
+import DetailBox from "../../component/skeloton/DetailBox";
+
 import AccordionSummary, {
     accordionSummaryClasses,
 } from '@mui/joy/AccordionSummary';
@@ -25,34 +27,35 @@ function DashBoard() {
     const classes = useStyles();
     const [suggetions, setSuggetions] = useState('');
     const suggestionslist = useSelector(getSuggetionsList);
-
-    // useEffect(()=>{
-    //     setSuggetions(suggestionslist);
-    // },[suggestionslist]);
-
-    console.log(suggestionslist, ">> suggestionslist");
+    const [index, setIndex] = React.useState(0);
     return (
         <div className={classes.body}>
             <Header />
 
             <AccordionGroup
+            variant="soft"
                 sx={{
-                    maxWidth: 400,
                     [`& .${accordionSummaryClasses.indicator}`]: {
-                        transition: '0.2s',
+                        transition: '0.6s',
                     },
                     [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]: {
                         transform: 'rotate(45deg)',
                     },
                 }}
             >
-                {suggestionslist?.length && suggestionslist.map((item) => {
-
+                {suggestionslist?.length && suggestionslist.map((item, num) => {
                     return (
-                        <Accordion fullWidth={true}>
-                            <AccordionSummary indicator={<AddIcon />}>{item}</AccordionSummary>
+                        <Accordion fullWidth={true}
+
+                        expanded={index === num}
+                            onChange={(event, expanded) => {
+                            setIndex(expanded ? num : null);
+                            }}
+                                            >
+                            <AccordionSummary indicator={<AddIcon />}>{item.value}</AccordionSummary>
                             <AccordionDetails>
-                                Details will come here soon....
+                                <DetailBox />
+                                {item.name}
                             </AccordionDetails>
                         </Accordion>
                     );
