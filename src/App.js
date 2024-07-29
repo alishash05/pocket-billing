@@ -8,6 +8,7 @@ import Login from './view/login/login.js';
 import SignIn from './view/login/signIn.js';
 import DashBoard from "./view/dashboard/dashboard.js";
 import { setupInterceptor } from "./util/http.js";
+import Header from './component/header/header.js';
 
 const useStyles = createUseStyles({
   color: {
@@ -25,13 +26,13 @@ const classes = useStyles();
 return(
 <div className={classes.color}>
     <Provider store={store}>
+    <Header />
         <Router>
 				<Routes> 
 				<Route path="/" element={<Login />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/dashboard" element={<DashBoard />} />
 				<Route path="/next" element={<NextPage />} />
-				{/* <Route path="/SignOut" element={<SignOut />} /> */}
 			</Routes> 
         </Router>
     </Provider>

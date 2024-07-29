@@ -107,16 +107,21 @@ const authenticationSlice = createSlice({
 export const { setUserDetails, setToken, setSuggetions } = authenticationSlice.actions;
 
 export const fetchLogin = (username, password) => async (dispatch) => {
+  console.log(username, password);
   try {
-    const response = await axios.post('http://localhost:8080/auth/login', {
-      email: "alisha.shaikh@billing.com",
-      password: "alisha"
+    const response = await axios.post(`${process.env.REACT_APP_APIAUTH_URL}/login`, {
+      email: username,
+      password: password,
+    }).then(({data})=>{
+      dispatch(setToken(data.jwtToken));
+      dispatch(setUserDetails(data));
     });
 
-  //const response = await fetch(`${process.env.REACT_APP_APIAUTH_URL}/login`, options).then(async(res)=>await res.json());
+  //   console.log(response, "test");
+  // //const response = await fetch(`${process.env.REACT_APP_APIAUTH_URL}/login`, options).then(async(res)=>await res.json());
     
-	dispatch(setToken(response.data.jwtToken));
-    dispatch(setUserDetails(response.data));
+	// dispatch(setToken(response.data.jwtToken));
+  //   dispatch(setUserDetails(response.data));
   } catch (error) {
   
     console.error('Login failed:', error.message);
