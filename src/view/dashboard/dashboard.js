@@ -30,7 +30,6 @@ function DashBoard() {
     const [index, setIndex] = React.useState(0);
     return (
         <div className={classes.body}>
-            <Header />
 
             <AccordionGroup
             variant="soft"
@@ -52,7 +51,7 @@ function DashBoard() {
                             setIndex(expanded ? num : null);
                             }}
                                             >
-                            <AccordionSummary indicator={<AddIcon />}>{item.value}</AccordionSummary>
+                            <AccordionSummary indicator={<AddIcon />}>{item.fullname}</AccordionSummary>
                             <AccordionDetails>
                                 <DetailBox />
                                 {item.name}
