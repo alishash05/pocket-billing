@@ -1,0 +1,24 @@
+[
+    {
+        "fullname":"Hidayat, Shaikh",
+        "name": "Hidayat",
+        "lastname": "Shaikh",
+        "phone": "9988199919",
+        "address": "128/5B, Dattawadi, Pune-30",
+        "email":"hidayat.shaikh@billing.com",
+        "img":"",
+        "id":1,
+        "serviceId":"110051987"
+    },
+    {
+        "fullname":"Alisha, Shaikh",
+        "name": "Alisha",
+        "lastname": "Shaikh",
+        "phone": "56568958989",
+        "address": "102, nearby masjid, bhim nagar, Pune-11",
+        "email":"alisha.shaikh@billing.com",
+        "img":"",
+        "id":2,
+        "serviceId":"11265656"
+    }
+]
