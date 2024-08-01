@@ -10,6 +10,16 @@ const useStyles = createUseStyles({
         width: '100%',
         backgroundColor: 'white',
         border: '0px solid black',
+        fontSize: '16px', 
+        '@media (max-width: 1200px)':{
+            fontSize: '14px',
+        },
+        '@media (max-width: 900px)':{
+            fontSize: '12px',
+        },
+        '@media (max-width: 600px)':{
+            fontSize: '10px',
+        },
     },
 });
 
@@ -24,7 +34,7 @@ function Table() {
 
     return (
         <div className={classes.tableContainer}>
-     <Header />
+            <Header />
             {dataArray.map((row, index) => (
                 <Tr key={index} box={row.data} />
             ))}

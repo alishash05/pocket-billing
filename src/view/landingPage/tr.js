@@ -2,36 +2,51 @@ import React from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-    rowItem: {
+    rowItem:{
         display: 'flex',
         width: '100%',
         height: '34px',
-        fontSize: '18px',
-        border: '6px solid darkgray', 
+        fontSize: '18px', 
+        border: '1px solid darkgray', 
         alignItems: 'center',
+        '@media (max-width: 1200px)':{
+            fontSize: '16px',
+        },
+        '@media (max-width: 900px)':{
+            fontSize: '14px',
+        },
+        '@media (max-width: 600px)':{
+            fontSize: '12px',
+        },
     },
-    cell: {
+    td:{
         flex: 1, 
         color: 'black',
-        backgroundColor: 'lightgray', 
+        backgroundColor: '#80808036', 
         padding: '10px',
         textAlign: 'left',
         fontWeight: 'bold',
-        fontSize: '18px',
-        
-       
+        '@media (max-width: 1200px)':{
+            fontSize: '16px',
+        },
+        '@media (max-width: 900px)':{
+            fontSize: '14px',
+        },
+        '@media (max-width: 600px)':{
+            fontSize: '12px',
+        },
     },
 });
 
-function Tr({ box }) {
+function Tr({ box }){
     const classes = useStyles();
 
     return (
         <div className={classes.rowItem}>
-            {box.map((cell, index) => (
-                <div key={index} className={classes.cell}>
-                  {cell}
-                </div>
+            {box.map((item, index) => (
+            <div key={index} className={classes.td}>
+                  {item}
+            </div>
             ))}
         </div>
     );
