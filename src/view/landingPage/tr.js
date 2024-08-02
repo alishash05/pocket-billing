@@ -21,7 +21,7 @@ const useStyles = createUseStyles({
     },
     td:{
         flex: 1, 
-        color: 'black',
+        color: 'gray',
         backgroundColor: '#80808036', 
         padding: '10px',
         textAlign: 'left',

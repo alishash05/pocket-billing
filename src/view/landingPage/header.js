@@ -25,9 +25,10 @@ function Header() {
 
     return (
         <div className={classes.headerContainer}>
-            <div className={classes.headerItem}>Player</div>
-            <div className={classes.headerItem}>Gloobles</div>
-            <div className={classes.headerItem}>Za'taak</div>
+            <div className={classes.headerItem}>Name</div>
+            <div className={classes.headerItem}>Amout</div>
+            <div className={classes.headerItem}>Date</div>
+            <div className={classes.headerItem}>RecivedBy</div>
         </div>
     );
 }

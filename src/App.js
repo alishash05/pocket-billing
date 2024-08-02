@@ -9,6 +9,7 @@ import SignIn from './view/login/signIn.js';
 import DashBoard from "./view/dashboard/dashboard.js";
 import LandingPage from "./view/landingPage/LandingPage.js";
 import { setupInterceptor } from "./util/http.js";
+//import  UnstyledInputIntroduction from "./view/landingPage/input.js";
 
 const useStyles = createUseStyles({
   color: {
@@ -33,7 +34,8 @@ return(
         <Route path="/dashboard" element={<DashBoard />} />
 				<Route path="/next" element={<NextPage />} />
         <Route path="/LandingPage" element={<LandingPage />} />
-				{/* <Route path="/SignOut" element={<SignOut />} /> */}
+			{/*<Route path="/input" element={< UnstyledInputIntroduction />}/>*/}
+        {/* <Route path="/SignOut" element={<SignOut />} /> */}
 			</Routes> 
         </Router>
     </Provider>

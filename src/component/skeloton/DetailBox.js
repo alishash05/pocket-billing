@@ -8,6 +8,7 @@ import Skeleton from '@mui/joy/Skeleton';
 import Typography from '@mui/joy/Typography';
 import { useSelector } from 'react-redux';
 import { getSuggetionsList } from "../../service/loginSlice";
+import LandingPage from "../../view/landingPage/LandingPage.js";
 
 export default function DetailBox() {
   const suggestions = useSelector(getSuggetionsList);
@@ -27,7 +28,7 @@ export default function DetailBox() {
   return (
     <Stack spacing={1} useFlexGap>
       <Card>
-        <CardContent orientation="horizontal" >
+        <CardContent orientation="horizontal">
           <Skeleton animation="wave" variant="circular" width={48} height={48} />
           <div>
             {member.fullname ? (
@@ -52,16 +53,14 @@ export default function DetailBox() {
               ) : (
                 <Skeleton animation="wave" variant="text" sx={{ width: "150vw", fontSize: { xs: '0.8rem', sm: '1rem', md: '1.2rem' } }} />
               )}
+
             </Stack>
-          </div>
+        </div>
         </CardContent>
-        <AspectRatio ratio="21/9">
-          <Skeleton animation="wave" variant="overlay">
-            <img
-              alt=""
-              src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-            />
-          </Skeleton>
+        <AspectRatio ratio="21/6">
+        <LandingPage />
+      {    /*<Skeleton animation="wave" variant="overlay">
+          </Skeleton>*/}
         </AspectRatio>
         <Typography 
           sx={{ 
@@ -69,13 +68,12 @@ export default function DetailBox() {
             overflow: 'hidden'
           }}
         >
-          {member.address ? member.address : (
+          {member.address || (
             <Skeleton animation="wave" variant="text" sx={{ width: "150vw", fontSize: { xs: '0.8rem', sm: '1rem', md: '1.2rem' } }} />
           )}
         </Typography>
         <Button>
           Read more
-          <Skeleton animation="wave" />
         </Button>
       </Card>
     </Stack>
