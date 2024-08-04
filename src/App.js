@@ -27,6 +27,7 @@ const classes = useStyles();
 return(
 <div className={classes.color}>
     <Provider store={store}>
+    <Header />
         <Router>
 				<Routes> 
 				<Route path="/" element={<Login />} />
