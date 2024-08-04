@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*import React from 'react';
 import { createUseStyles } from 'react-jss';
 
@@ -25,6 +26,8 @@ function HeaderSign() {
 
 export default HeaderSign
 */
+=======
+>>>>>>> feature-alisha-changes
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 

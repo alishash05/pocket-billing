@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import login from '../service/loginSlice';
+import { createStore } from 'redux';
+import authenticationSlice from '../service/loginSlice';
 
 export default configureStore({
   reducer: combineReducers({
-    login: login,
+    authentication: authenticationSlice,
   }),
 });

@@ -1,52 +1,9 @@
 /*import React, { useState, useEffect } from 'react';
 import Table from './Table';
-<<<<<<< HEAD
-
-=======
->>>>>>> feature-alisha-changes
 function Gridtable() {
   const [data, setData] = useState([
     { srno: '1', item: 'pen', quantity: '5', amount: '50' },
     { srno: '2', item: 'pen', quantity: '20', amount: '200' },
-<<<<<<< HEAD
-    { srno: '3', item: 'pen', quantity: '10', amount: '100' },
-  ]);
-
-  const [totalAmount, setTotalAmount] = useState(0);
-  const [totalGstAmount, setTotalGstAmount] = useState(0);
-  const [totalServiceTaxAmount, setTotalServiceTaxAmount] = useState(0);
-
-  useEffect(() => {
-    calculateTotals();
-  }, [data]);
-
-  const calculateTotals = () => {
-    let total = 0;
-
-    data.forEach((item) => {
-      total += parseInt(item.amount);
-    });
-
-    const gstTotal = total * 0.18;
-    const serviceTaxTotal = total * 0.2;
-
-    setTotalAmount(total);
-    setTotalGstAmount(gstTotal);
-    setTotalServiceTaxAmount(serviceTaxTotal);
-  };
-
-  const addRow = () => {
-    const newRow = { srno: '', item: '', quantity: '', amount: '' };
-    setData([...data, newRow]);
-  };
-
-  const deleteRow = (index) => {
-    const newData = [...data];
-    newData.splice(index, 1);
-    setData(newData);
-  };
-
-=======
     { srno: '3', item: 'pen', quantity: '10', amount: '100' }, ]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalGstAmount, setTotalGstAmount] = useState(0);
@@ -70,7 +27,6 @@ const deleteRow = (index) => {
     const newData = [...data];
     newData.splice(index, 1);
     setData(newData);};
->>>>>>> feature-alisha-changes
   return (
     <div>
       <Table
@@ -81,18 +37,6 @@ const deleteRow = (index) => {
         totalServiceTaxAmount={totalServiceTaxAmount}
         setData={setData}
         addRow={addRow}
-<<<<<<< HEAD
-        deleteRow={deleteRow}
-      />
-    </div>
-  );
-}
-
-export default Gridtable*/
-
-import React, { useState, useEffect } from 'react';
-import Table from './Table';
-=======
         deleteRow={deleteRow} />
     </div> );}
 export default Gridtable*/
@@ -101,7 +45,6 @@ import React, { useState, useEffect } from 'react';
 import Table from './Table';
 import axios from 'axios';
 
->>>>>>> feature-alisha-changes
 
 function Gridtable() {
   const [data, setData] = useState([
@@ -118,8 +61,6 @@ function Gridtable() {
   const [totalServiceTaxAmount, setTotalServiceTaxAmount] = useState(0);
 
 useEffect(()=>{
-<<<<<<< HEAD
-=======
 	
 	    axios.get('http://localhost:8080/api/v1/product',{}, {
 			headers:{
@@ -136,7 +77,6 @@ useEffect(()=>{
     .catch(error => {
       console.error('Error:', error);
     });
->>>>>>> feature-alisha-changes
 	calculateTotals();
 }, [data]);
 
@@ -182,8 +122,6 @@ return(
   );
 }
 
-<<<<<<< HEAD
-=======
 export default Gridtable*/
 
 
@@ -227,7 +165,7 @@ useEffect(()=>{
       console.error('Error:', error);
     });
 	calculateTotals();
-}, [data]);
+}, []);
 console.log(useEffect);
 
 
@@ -274,5 +212,4 @@ return(
   );
 }
 
->>>>>>> feature-alisha-changes
 export default Gridtable
