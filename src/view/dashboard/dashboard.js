@@ -15,7 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 const useStyles = createUseStyles({
     body: {
         background: "#76b852", /* fallback for old browsers */
-        background: "rgb(141,194,111)",
+       background: "rgb(141,194,111)",
         background: "linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%)",
         fontFamily: "sans-serif",
         "-webkit-font-smoothing": "antialiased",
@@ -30,6 +30,7 @@ function DashBoard() {
     const [index, setIndex] = React.useState(0);
     return (
         <div className={classes.body}>
+            <Header />
 
             <AccordionGroup
             variant="soft"
@@ -51,10 +52,10 @@ function DashBoard() {
                             setIndex(expanded ? num : null);
                             }}
                                             >
-                            <AccordionSummary indicator={<AddIcon />}>{item.fullname}</AccordionSummary>
+                            <AccordionSummary indicator={<AddIcon />}>{item.value}</AccordionSummary>
                             <AccordionDetails>
                                 <DetailBox />
-                                {item.name}
+                                { /*{item.name}*/}
                             </AccordionDetails>
                         </Accordion>
                     );

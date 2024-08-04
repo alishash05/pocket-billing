@@ -1,4 +1,4 @@
-/*import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import https from "../util/http";
 
 const authenticationSlice = createSlice({
@@ -6,7 +6,30 @@ const authenticationSlice = createSlice({
   initialState: {
     userDetails:{},
     token:"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhbGlzaGEuc2hhaWtoQGJpbGxpbmcuY29tIiwiaWF0IjoxNzIxOTgwNTg2LCJleHAiOjE3MjE5OTg1ODZ9.QvHwEJI10b1IhJGxCfK7cZk2QtKcKQfrITqhSLgNDebZdqyWDsOvVYnHfq3I8q389rdr3r3z71JEX0tJmXLPFA",
-    suggetions:[],
+    suggetions:[
+    {
+        "fullname":"Hidayat, Shaikh",
+        "name": "Hidayat",
+        "lastname": "Shaikh",
+        "phone": "9988199919",
+        "address": "128/5B, Dattawadi, Pune-30",
+        "email":"hidayat.shaikh@billing.com",
+        "img":"",
+        "id":1,
+        "serviceId":"110051987"
+    },
+    {
+        "fullname":"Alisha, Shaikh",
+        "name": "Alisha",
+        "lastname": "Shaikh",
+        "phone": "56568958989",
+        "address": "102, nearby masjid, bhim nagar, Pune-11",
+        "email":"alisha.shaikh@billing.com",
+        "img":"",
+        "id":2,
+        "serviceId":"11265656"
+    }
+],
   },
   reducers: {
     setUserDetails:(state, action)=>{
@@ -24,6 +47,7 @@ const authenticationSlice = createSlice({
     },
     setSuggetions:(state, action)=>{
       console.log(action.payload, ">>> action.payload");
+     
       return {
         ...state,
         suggetions: action.payload
@@ -66,79 +90,4 @@ export const { userDetails, token, suggetions } = ({ authentication })=> authent
 export const getSuggetionsList = ({authentication})=> authentication.suggetions;
 
 
-export default authenticationSlice.reducer;
-*/
-
-import { createSlice } from '@reduxjs/toolkit';
-import https from "../util/http";
-import axios from 'axios';
-
-
-const authenticationSlice = createSlice({
-  name: 'authentication',
-  initialState: {
-    userDetails:{},
-    token:'',
-    suggetions:[],
-  },
-  reducers: {
-    setUserDetails: (state, action) => {
-      state.userDetails = action.payload;
-    },
-    setToken: (state, action) => {
-      state.token = action.payload;
-    },
-    setError: (state, action) => {
-      state.error = action.payload;
-    },
-    clearError: (state) => {
-      state.error = null;
-    },
-    setSuggetions:(state, action)=>{
-      console.log(action.payload, ">>> action.payload");
-      return {
-        ...state,
-        suggetions: action.payload
-      }
-    }
-  },
-});
-
-export const { setUserDetails, setToken, setSuggetions } = authenticationSlice.actions;
-
-export const fetchLogin = (username, password) => async (dispatch) => {
-  console.log(username, password);
-  try {
-    const response = await axios.post(`${process.env.REACT_APP_APIAUTH_URL}/login`, {
-      email: username,
-      password: password,
-    }).then(({data})=>{
-      dispatch(setToken(data.jwtToken));
-      dispatch(setUserDetails(data));
-    });
-
-  //   console.log(response, "test");
-  // //const response = await fetch(`${process.env.REACT_APP_APIAUTH_URL}/login`, options).then(async(res)=>await res.json());
-    
-	// dispatch(setToken(response.data.jwtToken));
-  //   dispatch(setUserDetails(response.data));
-  } catch (error) {
-  
-    console.error('Login failed:', error.message);
-  }
-};
-
-
-export const fetchAutocomplete = (search)=>(dispatch)=>{
-  https(`${process.env.REACT_APP_APIBASE_URL}/suggestions?prefix=${search}`,{
-    method:"GET"
-  }).then(({data})=>{
-    dispatch(setSuggetions(data));
-    console.log(data, "search result");
-  })
-}
-
-
-export const selectAuthentication = (state) => state.authentication;
-export const getSuggetionsList = ({authentication})=> authentication.suggetions;
 export default authenticationSlice.reducer;

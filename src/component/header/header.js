@@ -294,8 +294,9 @@ export default function Header() {
   ];
 
 const searchOnchnage = (e)=>{
-  console.log(e.target.value, ">>> test");
-  dispatch(fetchAutocomplete(e.target.value,))
+  console.log(e.target.value, ">>> test ");
+
+ // dispatch(fetchAutocomplete(e.target.value,))
 }
   return (
     <Box sx={{ flexGrow: 1 }}>
